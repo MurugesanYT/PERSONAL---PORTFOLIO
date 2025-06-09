@@ -3,8 +3,22 @@ import React from 'react';
 import { ArrowDown, Code, Globe, Zap, Trophy, Target } from 'lucide-react';
 
 const Hero = () => {
+  const handleExploreClick = () => {
+    const portfolioSection = document.getElementById('portfolio');
+    if (portfolioSection) {
+      portfolioSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const handleContactClick = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       {/* Enhanced animated background elements */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
@@ -69,8 +83,8 @@ const Hero = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <a 
-            href="#portfolio" 
+          <button 
+            onClick={handleExploreClick}
             className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-purple-500/25 overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -78,17 +92,17 @@ const Hero = () => {
               Explore My Work
               <ArrowDown className="ml-2 w-5 h-5 group-hover:translate-y-1 transition-transform duration-300" />
             </span>
-          </a>
+          </button>
           
-          <a 
-            href="#contact" 
+          <button 
+            onClick={handleContactClick}
             className="group relative px-8 py-4 border-2 border-purple-400 rounded-2xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 overflow-hidden backdrop-blur-sm"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             <span className="relative z-10 text-purple-300 group-hover:text-white transition-colors duration-300">
               Get In Touch
             </span>
-          </a>
+          </button>
         </div>
 
         {/* Achievement badges */}
@@ -110,12 +124,15 @@ const Hero = () => {
 
       {/* Enhanced Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-        <div className="flex flex-col items-center animate-bounce">
-          <span className="text-sm text-purple-300 mb-2 font-medium">Scroll to explore</span>
-          <div className="w-6 h-10 border-2 border-purple-400 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-purple-400 rounded-full mt-2 animate-pulse"></div>
+        <button 
+          onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+          className="flex flex-col items-center animate-bounce hover:animate-none focus:outline-none group"
+        >
+          <span className="text-sm text-purple-300 mb-2 font-medium group-hover:text-purple-200">Scroll to explore</span>
+          <div className="w-6 h-10 border-2 border-purple-400 group-hover:border-purple-300 rounded-full flex justify-center transition-colors">
+            <div className="w-1 h-3 bg-purple-400 group-hover:bg-purple-300 rounded-full mt-2 animate-pulse transition-colors"></div>
           </div>
-        </div>
+        </button>
       </div>
     </section>
   );

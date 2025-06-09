@@ -1,8 +1,52 @@
 
-import React from 'react';
-import { Mail, MapPin, Phone, Send } from 'lucide-react';
+import React, { useState } from 'react';
+import { Mail, MapPin, Phone, Send, CheckCircle, AlertCircle } from 'lucide-react';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Simulate form submission
+    try {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Create mailto link
+      const subject = encodeURIComponent(formData.subject || 'Portfolio Contact');
+      const body = encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+      );
+      const mailtoLink = `mailto:youvegottabefreakingkiddingme@gmail.com?subject=${subject}&body=${body}`;
+      
+      window.location.href = mailtoLink;
+      
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setSubmitStatus('idle'), 3000);
+    }
+  };
+
   return (
     <section id="contact" className="py-20 px-6 bg-gradient-to-br from-gray-800 to-gray-900">
       <div className="max-w-6xl mx-auto">
@@ -16,7 +60,7 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-12 items-start">
           {/* Contact Info */}
           <div className="space-y-8">
             <div className="flex items-center gap-4 p-6 bg-gray-800/50 rounded-xl border border-gray-700/50 hover:border-purple-500/50 transition-colors duration-300">
@@ -53,52 +97,132 @@ const Contact = () => {
                 <p className="text-gray-400">Within 24 hours</p>
               </div>
             </div>
+
+            {/* Skills Preview */}
+            <div className="bg-gradient-to-br from-purple-600/20 to-blue-600/20 p-6 rounded-xl border border-purple-500/30">
+              <h3 className="text-xl font-bold text-white mb-4">What I Can Help With</h3>
+              <div className="grid grid-cols-2 gap-3">
+                <div className="text-center">
+                  <h4 className="font-semibold text-purple-400 mb-1">Web Development</h4>
+                  <p className="text-xs text-gray-400">React, Next.js, TypeScript</p>
+                </div>
+                <div className="text-center">
+                  <h4 className="font-semibold text-blue-400 mb-1">Mobile Apps</h4>
+                  <p className="text-xs text-gray-400">React Native, Flutter</p>
+                </div>
+                <div className="text-center">
+                  <h4 className="font-semibold text-green-400 mb-1">AI & ML</h4>
+                  <p className="text-xs text-gray-400">Python, TensorFlow</p>
+                </div>
+                <div className="text-center">
+                  <h4 className="font-semibold text-pink-400 mb-1">UI/UX Design</h4>
+                  <p className="text-xs text-gray-400">Figma, Tailwind CSS</p>
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* CTA Section */}
-          <div className="bg-gradient-to-br from-purple-600/20 to-blue-600/20 p-8 rounded-xl border border-purple-500/30">
-            <h3 className="text-2xl font-bold text-white mb-4">Ready to Start a Project?</h3>
-            <p className="text-gray-300 mb-6">
-              Whether you need a web application, mobile app, or have an innovative idea to explore, 
-              I'm here to help bring your vision to reality.
-            </p>
+          {/* Contact Form */}
+          <div className="bg-gray-800/50 p-8 rounded-xl border border-gray-700/50">
+            <h3 className="text-2xl font-bold text-white mb-6">Send me a message</h3>
             
-            <div className="space-y-4">
-              <a
-                href="mailto:youvegottabefreakingkiddingme@gmail.com"
-                className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white py-4 px-6 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 flex items-center justify-center gap-2"
-              >
-                <Send className="w-5 h-5" />
-                Send Me an Email
-              </a>
-              
-              <p className="text-sm text-gray-400 text-center">
-                Let's discuss your project and explore the possibilities together
-              </p>
-            </div>
-          </div>
-        </div>
+            {submitStatus === 'success' && (
+              <div className="mb-6 p-4 bg-green-600/20 border border-green-500/30 rounded-lg flex items-center gap-3">
+                <CheckCircle className="w-5 h-5 text-green-400" />
+                <span className="text-green-300">Message sent successfully!</span>
+              </div>
+            )}
 
-        {/* Skills Preview */}
-        <div className="mt-16 text-center">
-          <h3 className="text-2xl font-bold text-white mb-6">What I Can Help With</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700/50">
-              <h4 className="font-semibold text-purple-400 mb-2">Web Development</h4>
-              <p className="text-sm text-gray-400">React, Next.js, TypeScript</p>
-            </div>
-            <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700/50">
-              <h4 className="font-semibold text-blue-400 mb-2">Mobile Apps</h4>
-              <p className="text-sm text-gray-400">React Native, Flutter</p>
-            </div>
-            <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700/50">
-              <h4 className="font-semibold text-green-400 mb-2">AI & ML</h4>
-              <p className="text-sm text-gray-400">Python, TensorFlow</p>
-            </div>
-            <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700/50">
-              <h4 className="font-semibold text-pink-400 mb-2">UI/UX Design</h4>
-              <p className="text-sm text-gray-400">Figma, Tailwind CSS</p>
-            </div>
+            {submitStatus === 'error' && (
+              <div className="mb-6 p-4 bg-red-600/20 border border-red-500/30 rounded-lg flex items-center gap-3">
+                <AlertCircle className="w-5 h-5 text-red-400" />
+                <span className="text-red-300">Failed to send message. Please try again.</span>
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+                    Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+                    placeholder="Your name"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                    Email *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+                    placeholder="your.email@example.com"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
+                  Subject
+                </label>
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+                  placeholder="Project inquiry, collaboration, etc."
+                />
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                  Message *
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  required
+                  rows={5}
+                  className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 resize-vertical"
+                  placeholder="Tell me about your project or idea..."
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSubmitting || !formData.name || !formData.email || !formData.message}
+                className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 disabled:from-gray-600 disabled:to-gray-700 text-white py-4 px-6 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 flex items-center justify-center gap-2 disabled:transform-none disabled:shadow-none disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-white/20 border-t-white rounded-full animate-spin"></div>
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-5 h-5" />
+                    Send Message
+                  </>
+                )}
+              </button>
+            </form>
           </div>
         </div>
       </div>

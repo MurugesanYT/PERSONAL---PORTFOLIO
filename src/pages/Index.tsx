@@ -7,6 +7,7 @@ import Skills from '@/components/Skills';
 import Portfolio from '@/components/Portfolio';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import BackToTop from '@/components/BackToTop';
 
 const Index = () => {
   return (
@@ -21,11 +22,20 @@ const Index = () => {
       
       <Navigation />
       <Hero />
-      <About />
-      <Skills />
-      <Portfolio />
-      <Contact />
+      <section id="about">
+        <About />
+      </section>
+      <section id="skills">
+        <Skills />
+      </section>
+      <section id="portfolio">
+        <Portfolio />
+      </section>
+      <section id="contact">
+        <Contact />
+      </section>
       <Footer />
+      <BackToTop />
     </div>
   );
 };
