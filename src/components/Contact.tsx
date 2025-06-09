@@ -9,8 +9,6 @@ const Contact = () => {
     subject: '',
     message: ''
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -20,31 +18,17 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+  const handleSendMessage = () => {
+    const subject = encodeURIComponent(formData.subject || 'Portfolio Contact');
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    );
+    const mailtoLink = `mailto:youvegottabefreakingkiddingme@gmail.com?subject=${subject}&body=${body}`;
     
-    // Simulate form submission
-    try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Create mailto link
-      const subject = encodeURIComponent(formData.subject || 'Portfolio Contact');
-      const body = encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-      );
-      const mailtoLink = `mailto:youvegottabefreakingkiddingme@gmail.com?subject=${subject}&body=${body}`;
-      
-      window.location.href = mailtoLink;
-      
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    } catch (error) {
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-      setTimeout(() => setSubmitStatus('idle'), 3000);
-    }
+    window.location.href = mailtoLink;
+    
+    // Clear form after sending
+    setFormData({ name: '', email: '', subject: '', message: '' });
   };
 
   return (
@@ -126,21 +110,7 @@ const Contact = () => {
           <div className="bg-gray-800/50 p-8 rounded-xl border border-gray-700/50">
             <h3 className="text-2xl font-bold text-white mb-6">Send me a message</h3>
             
-            {submitStatus === 'success' && (
-              <div className="mb-6 p-4 bg-green-600/20 border border-green-500/30 rounded-lg flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-green-400" />
-                <span className="text-green-300">Message sent successfully!</span>
-              </div>
-            )}
-
-            {submitStatus === 'error' && (
-              <div className="mb-6 p-4 bg-red-600/20 border border-red-500/30 rounded-lg flex items-center gap-3">
-                <AlertCircle className="w-5 h-5 text-red-400" />
-                <span className="text-red-300">Failed to send message. Please try again.</span>
-              </div>
-            )}
-
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="space-y-6">
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
@@ -206,23 +176,15 @@ const Contact = () => {
               </div>
 
               <button
-                type="submit"
-                disabled={isSubmitting || !formData.name || !formData.email || !formData.message}
+                type="button"
+                onClick={handleSendMessage}
+                disabled={!formData.name || !formData.email || !formData.message}
                 className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 disabled:from-gray-600 disabled:to-gray-700 text-white py-4 px-6 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 flex items-center justify-center gap-2 disabled:transform-none disabled:shadow-none disabled:cursor-not-allowed"
               >
-                {isSubmitting ? (
-                  <>
-                    <div className="w-5 h-5 border-2 border-white/20 border-t-white rounded-full animate-spin"></div>
-                    Sending...
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-5 h-5" />
-                    Send Message
-                  </>
-                )}
+                <Send className="w-5 h-5" />
+                Send Message
               </button>
-            </form>
+            </div>
           </div>
         </div>
       </div>
