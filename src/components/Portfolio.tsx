@@ -21,8 +21,7 @@ const Portfolio = () => {
     {
       title: "Love Proposal Program",
       url: "https://proposal-program.vercel.app",
-      description: "Craft a magical moment that will be remembered forever ✨
-If You Get Error Please Try Again ( Which Is Because OF The Temporary Deactivation Of The Database ) DM Me",
+      description: "Craft a magical moment that will be remembered forever ✨. If you get an error, please try again (due to temporary database deactivation). DM me To Activate It.",
       category: "Web App",
       featured: true
     },
