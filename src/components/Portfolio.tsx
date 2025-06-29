@@ -123,13 +123,21 @@ const Portfolio = () => {
     }
   ];
 
-  const categories = ["All", "Web App", "Geography", "Travel", "Utility", "Game", "Education", "Lifestyle", "Entertainment", "Search", "Engineering", "Food"];
+  const categories = [
+  "All", "Featured", "Web App", "Geography", "Travel", "Utility", "Game",
+  "Education", "Lifestyle", "Entertainment", "Search", "Engineering", "Food"
+];
+
 
   const [selectedCategory, setSelectedCategory] = React.useState("All");
 
-  const filteredProjects = selectedCategory === "All" 
-    ? projects 
+  const filteredProjects =
+  selectedCategory === "All"
+    ? projects
+    : selectedCategory === "Featured"
+    ? projects.filter(project => project.featured)
     : projects.filter(project => project.category === selectedCategory);
+
 
   return (
     <section id="portfolio" className="py-20 px-6 bg-gradient-to-br from-gray-900 to-gray-800">
@@ -184,9 +192,11 @@ const Portfolio = () => {
                     {project.category}
                   </span>
                   {project.featured && (
-                    <span className="text-xs bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-2 py-1 rounded-full">
-                      Featured
-                    </span>
+  <span className="text-xs bg-yellow-500/20 text-yellow-300 font-semibold px-2 py-1 rounded-full flex items-center gap-1">
+    <span role="img" aria-label="Star">⭐</span> Featured
+  </span>
+)}
+
                   )}
                 </div>
 
