@@ -19,6 +19,14 @@ const Portfolio = () => {
       featured: true
     },
     {
+      title: "Love Proposal Program",
+      url: "https://proposal-program.vercel.app",
+      description: "Craft a magical moment that will be remembered forever ✨
+If You Get Error Please Try Again ( Which Is Because OF The Temporary Deactivation Of The Database ) DM Me",
+      category: "Web App",
+      featured: true
+    },
+    {
       title: "Morse Code Translator",
       url: "https://codepen.io/Kabilan_27/pen/rNXyPoV",
       description: "Interactive morse code translation tool",
