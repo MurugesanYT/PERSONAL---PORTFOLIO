@@ -123,7 +123,8 @@ const Portfolio = () => {
     }
   ];
 
-  const categories = ["All", "Web App", "Geography", "Travel", "Utility", "Game", "Education"];
+  const categories = ["All", "Web App", "Geography", "Travel", "Utility", "Game", "Education", "Lifestyle", "Entertainment", "Search", "Engineering", "Food"];
+
   const [selectedCategory, setSelectedCategory] = React.useState("All");
 
   const filteredProjects = selectedCategory === "All" 
