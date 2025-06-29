@@ -197,7 +197,7 @@ const Portfolio = () => {
   </span>
 )}
 
-                  )}
+                 
                 </div>
 
                 {/* Project Content */}
