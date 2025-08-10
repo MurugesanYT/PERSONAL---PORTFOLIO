@@ -41,7 +41,8 @@ const Hero = () => {
             <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-64 lg:h-64 rounded-full overflow-hidden border-2 sm:border-4 border-white/20 shadow-2xl transform hover:scale-105 transition-all duration-500">
               <img 
                 src="https://i.ibb.co/2Y3Mshgt/3d820bd3-58a4-4c1c-b447-b11043015ef8.png" 
-                alt="M. Kabilan" 
+                alt="M. Kabilan – developer and football player portrait" 
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-purple-900/20 to-transparent"></div>
@@ -53,7 +54,7 @@ const Hero = () => {
         </div>
 
         {/* Enhanced Main Content */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-4 sm:mb-6 bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent animate-fade-in leading-tight">
+        <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-4 sm:mb-6 text-gradient animate-fade-in leading-tight">
           M. Kabilan
         </h1>
         

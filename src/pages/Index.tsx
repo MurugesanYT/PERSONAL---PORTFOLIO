@@ -11,7 +11,7 @@ import BackToTop from '@/components/BackToTop';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900 text-white scroll-smooth overflow-x-hidden">
+    <div className="min-h-screen bg-app text-foreground scroll-smooth overflow-x-hidden">
       {/* Background pattern */}
       <div className="fixed inset-0 opacity-[0.02]">
         <div className="absolute inset-0" style={{
@@ -21,19 +21,21 @@ const Index = () => {
       </div>
       
       <Navigation />
-      <Hero />
-      <section id="about">
-        <About />
-      </section>
-      <section id="skills">
-        <Skills />
-      </section>
-      <section id="portfolio">
-        <Portfolio />
-      </section>
-      <section id="contact">
-        <Contact />
-      </section>
+      <main role="main">
+        <Hero />
+        <section id="about">
+          <About />
+        </section>
+        <section id="skills">
+          <Skills />
+        </section>
+        <section id="portfolio">
+          <Portfolio />
+        </section>
+        <section id="contact">
+          <Contact />
+        </section>
+      </main>
       <Footer />
       <BackToTop />
     </div>
