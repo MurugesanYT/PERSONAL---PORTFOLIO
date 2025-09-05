@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ExternalLink, Github } from 'lucide-react';
 
@@ -128,7 +127,6 @@ const Portfolio = () => {
   "Education", "Lifestyle", "Entertainment", "Search", "Engineering", "Food"
 ];
 
-
   const [selectedCategory, setSelectedCategory] = React.useState("All");
 
   const filteredProjects =
@@ -138,30 +136,41 @@ const Portfolio = () => {
     ? projects.filter(project => project.featured)
     : projects.filter(project => project.category === selectedCategory);
 
+  const getCategoryColor = (category: string, isSelected: boolean) => {
+    if (isSelected) return 'btn-primary text-white';
+    
+    const colorMap: { [key: string]: string } = {
+      'Web App': 'glass border-[hsl(var(--elegant-purple))]/20 text-[hsl(var(--elegant-purple))] hover:bg-[hsl(var(--elegant-purple))]/5',
+      'Geography': 'glass border-[hsl(var(--elegant-blue))]/20 text-[hsl(var(--elegant-blue))] hover:bg-[hsl(var(--elegant-blue))]/5',
+      'Travel': 'glass border-[hsl(var(--elegant-charcoal))]/20 text-[hsl(var(--elegant-charcoal))] hover:bg-[hsl(var(--elegant-charcoal))]/5',
+      'Game': 'glass border-[hsl(var(--elegant-slate))]/20 text-[hsl(var(--elegant-slate))] hover:bg-[hsl(var(--elegant-slate))]/5',
+      'Education': 'glass border-[hsl(var(--elegant-purple))]/20 text-[hsl(var(--elegant-purple))] hover:bg-[hsl(var(--elegant-purple))]/5',
+    };
+    
+    return colorMap[category] || 'glass border-border/20 text-muted-foreground hover:bg-muted/5';
+  };
 
   return (
-    <section id="portfolio" className="py-20 px-6 bg-gradient-to-br from-gray-900 to-gray-800">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
+    <section id="portfolio" className="py-32 px-6 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="text-center mb-20 animate-fade-in">
+          <h2 className="text-5xl md:text-6xl font-display font-bold mb-6 text-gradient">
             Portfolio
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-green-400 to-blue-400 mx-auto mb-8"></div>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <div className="w-32 h-1 bg-gradient-to-r from-[hsl(var(--elegant-charcoal))] to-[hsl(var(--elegant-blue))] mx-auto mb-8 rounded-full"></div>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-elegant leading-relaxed">
             A showcase of my diverse projects spanning various technologies and domains
           </p>
         </div>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        {/* Elegant Category Filter */}
+        <div className="flex flex-wrap justify-center gap-3 mb-16 animate-fade-in">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                selectedCategory === category
-                  ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white'
-                  : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+              className={`px-6 py-3 rounded-xl text-sm font-medium transition-all duration-300 elegant-hover ${
+                getCategoryColor(category, selectedCategory === category)
               }`}
             >
               {category}
@@ -169,42 +178,40 @@ const Portfolio = () => {
           ))}
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Premium Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-in">
           {filteredProjects.map((project, index) => (
             <div
               key={project.title}
-              className={`group bg-gray-800/50 rounded-xl overflow-hidden border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-purple-500/10 ${
-                project.featured ? 'lg:col-span-1 md:col-span-1' : ''
+              className={`group glass-elevated rounded-2xl overflow-hidden elegant-hover transform transition-all duration-500 ${
+                project.featured ? 'ring-2 ring-[hsl(var(--elegant-purple))]/20' : ''
               }`}
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="p-6">
+              <div className="p-8">
                 {/* Project Header */}
-                <div className="flex items-center justify-between mb-4">
-                  <span className={`px-3 py-1 text-xs font-medium rounded-full ${
-                    project.category === 'Web App' ? 'bg-purple-600/20 text-purple-300' :
-                    project.category === 'Geography' ? 'bg-green-600/20 text-green-300' :
-                    project.category === 'Travel' ? 'bg-blue-600/20 text-blue-300' :
-                    project.category === 'Game' ? 'bg-pink-600/20 text-pink-300' :
-                    project.category === 'Education' ? 'bg-yellow-600/20 text-yellow-300' :
-                    'bg-gray-600/20 text-gray-300'
+                <div className="flex items-center justify-between mb-6">
+                  <span className={`px-4 py-2 text-xs font-medium rounded-full ${
+                    project.category === 'Web App' ? 'bg-[hsl(var(--elegant-purple))]/10 text-[hsl(var(--elegant-purple))] border border-[hsl(var(--elegant-purple))]/20' :
+                    project.category === 'Geography' ? 'bg-[hsl(var(--elegant-blue))]/10 text-[hsl(var(--elegant-blue))] border border-[hsl(var(--elegant-blue))]/20' :
+                    project.category === 'Travel' ? 'bg-[hsl(var(--elegant-charcoal))]/10 text-[hsl(var(--elegant-charcoal))] border border-[hsl(var(--elegant-charcoal))]/20' :
+                    project.category === 'Game' ? 'bg-[hsl(var(--elegant-slate))]/10 text-[hsl(var(--elegant-slate))] border border-[hsl(var(--elegant-slate))]/20' :
+                    'bg-muted/10 text-muted-foreground border border-muted/20'
                   }`}>
                     {project.category}
                   </span>
                   {project.featured && (
-  <span className="text-xs bg-yellow-500/20 text-yellow-300 font-semibold px-2 py-1 rounded-full flex items-center gap-1">
-    <span role="img" aria-label="Star">⭐</span> Featured
-  </span>
-)}
-
-                 
+                    <span className="text-xs bg-gradient-to-r from-[hsl(var(--elegant-purple))]/10 to-[hsl(var(--elegant-blue))]/10 text-[hsl(var(--elegant-purple))] font-semibold px-3 py-1 rounded-full flex items-center gap-1 border border-[hsl(var(--elegant-purple))]/20">
+                      <span role="img" aria-label="Star">⭐</span> Featured
+                    </span>
+                  )}
                 </div>
 
                 {/* Project Content */}
-                <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-purple-400 transition-colors">
+                <h3 className="text-2xl font-display font-semibold text-foreground mb-4 group-hover:text-[hsl(var(--elegant-purple))] transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-gray-400 mb-6 text-sm leading-relaxed">
+                <p className="text-muted-foreground mb-8 text-base leading-relaxed font-elegant">
                   {project.description}
                 </p>
 
@@ -214,7 +221,7 @@ const Portfolio = () => {
                     href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-purple-400 hover:text-purple-300 font-medium text-sm transition-colors"
+                    className="flex items-center gap-2 text-[hsl(var(--elegant-purple))] hover:text-[hsl(var(--elegant-blue))] font-medium text-sm transition-colors elegant-hover"
                   >
                     <ExternalLink className="w-4 h-4" />
                     View Project
@@ -222,28 +229,28 @@ const Portfolio = () => {
                 </div>
               </div>
 
-              {/* Hover Effect */}
-              <div className="h-1 bg-gradient-to-r from-purple-600 to-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+              {/* Elegant Hover Effect */}
+              <div className="h-1 bg-gradient-to-r from-[hsl(var(--elegant-purple))] to-[hsl(var(--elegant-blue))] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
             </div>
           ))}
         </div>
 
-        {/* Stats */}
-        <div className="mt-16 text-center">
-          <div className="inline-flex items-center gap-8 bg-gray-800/50 rounded-full px-8 py-4 border border-gray-700/50">
+        {/* Premium Stats */}
+        <div className="mt-20 text-center animate-fade-in">
+          <div className="glass-luxury rounded-2xl px-12 py-8 inline-flex items-center gap-12">
             <div className="text-center">
-              <div className="text-2xl font-bold text-purple-400">{projects.length}+</div>
-              <div className="text-sm text-gray-400">Total Projects</div>
+              <div className="text-3xl font-display font-bold text-[hsl(var(--elegant-purple))]">{projects.length}+</div>
+              <div className="text-sm text-muted-foreground font-medium">Total Projects</div>
             </div>
-            <div className="w-px h-8 bg-gray-600"></div>
+            <div className="w-px h-12 bg-border"></div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-blue-400">{categories.length - 1}</div>
-              <div className="text-sm text-gray-400">Categories</div>
+              <div className="text-3xl font-display font-bold text-[hsl(var(--elegant-blue))]">{categories.length - 1}</div>
+              <div className="text-sm text-muted-foreground font-medium">Categories</div>
             </div>
-            <div className="w-px h-8 bg-gray-600"></div>
+            <div className="w-px h-12 bg-border"></div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-green-400">2</div>
-              <div className="text-sm text-gray-400">Featured Apps</div>
+              <div className="text-3xl font-display font-bold text-[hsl(var(--elegant-charcoal))]">3</div>
+              <div className="text-sm text-muted-foreground font-medium">Featured Apps</div>
             </div>
           </div>
         </div>

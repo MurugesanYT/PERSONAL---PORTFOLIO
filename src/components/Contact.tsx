@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Mail, MapPin, Phone, Send, CheckCircle, AlertCircle } from 'lucide-react';
 
@@ -32,88 +31,102 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 px-6 bg-gradient-to-br from-gray-800 to-gray-900">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
+    <section id="contact" className="py-32 px-6 relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-[0.02]">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `radial-gradient(circle at 3px 3px, hsl(var(--elegant-blue)) 2px, transparent 0)`,
+          backgroundSize: '60px 60px'
+        }}></div>
+      </div>
+      
+      <div className="max-w-6xl mx-auto relative z-10">
+        <div className="text-center mb-20 animate-fade-in">
+          <h2 className="text-5xl md:text-6xl font-display font-bold mb-6 text-gradient">
             Let's Connect
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-pink-400 to-purple-400 mx-auto mb-8"></div>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <div className="w-32 h-1 bg-gradient-to-r from-[hsl(var(--elegant-slate))] to-[hsl(var(--elegant-purple))] mx-auto mb-8 rounded-full"></div>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-elegant leading-relaxed">
             Ready to bring your ideas to life? Let's collaborate and create something amazing together.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-start">
+        <div className="grid md:grid-cols-2 gap-16 items-start">
           {/* Contact Info */}
-          <div className="space-y-8">
-            <div className="flex items-center gap-4 p-6 bg-gray-800/50 rounded-xl border border-gray-700/50 hover:border-purple-500/50 transition-colors duration-300">
-              <div className="w-12 h-12 bg-purple-600/20 rounded-lg flex items-center justify-center">
-                <Mail className="w-6 h-6 text-purple-400" />
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-white mb-1">Email</h3>
-                <a 
-                  href="mailto:youvegottabefreakingkiddingme@gmail.com"
-                  className="text-gray-400 hover:text-purple-400 transition-colors"
-                >
-                  youvegottabefreakingkiddingme@gmail.com
-                </a>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-4 p-6 bg-gray-800/50 rounded-xl border border-gray-700/50 hover:border-blue-500/50 transition-colors duration-300">
-              <div className="w-12 h-12 bg-blue-600/20 rounded-lg flex items-center justify-center">
-                <MapPin className="w-6 h-6 text-blue-400" />
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-white mb-1">Location</h3>
-                <p className="text-gray-400">Available Worldwide</p>
+          <div className="space-y-8 animate-fade-in">
+            <div className="glass-elevated p-8 rounded-2xl group elegant-hover">
+              <div className="flex items-center gap-6 mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-[hsl(var(--elegant-purple))]/10 to-[hsl(var(--elegant-purple))]/20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Mail className="w-8 h-8 text-[hsl(var(--elegant-purple))]" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-display font-semibold text-foreground mb-2">Email</h3>
+                  <a 
+                    href="mailto:youvegottabefreakingkiddingme@gmail.com"
+                    className="text-muted-foreground hover:text-[hsl(var(--elegant-purple))] transition-colors font-elegant"
+                  >
+                    youvegottabefreakingkiddingme@gmail.com
+                  </a>
+                </div>
               </div>
             </div>
 
-            <div className="flex items-center gap-4 p-6 bg-gray-800/50 rounded-xl border border-gray-700/50 hover:border-green-500/50 transition-colors duration-300">
-              <div className="w-12 h-12 bg-green-600/20 rounded-lg flex items-center justify-center">
-                <Phone className="w-6 h-6 text-green-400" />
+            <div className="glass-elevated p-8 rounded-2xl group elegant-hover">
+              <div className="flex items-center gap-6 mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-[hsl(var(--elegant-blue))]/10 to-[hsl(var(--elegant-blue))]/20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <MapPin className="w-8 h-8 text-[hsl(var(--elegant-blue))]" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-display font-semibold text-foreground mb-2">Location</h3>
+                  <p className="text-muted-foreground font-elegant">Available Worldwide</p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-lg font-semibold text-white mb-1">Response Time</h3>
-                <p className="text-gray-400">Within 24 hours</p>
+            </div>
+
+            <div className="glass-elevated p-8 rounded-2xl group elegant-hover">
+              <div className="flex items-center gap-6 mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-[hsl(var(--elegant-charcoal))]/10 to-[hsl(var(--elegant-charcoal))]/20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Phone className="w-8 h-8 text-[hsl(var(--elegant-charcoal))]" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-display font-semibold text-foreground mb-2">Response Time</h3>
+                  <p className="text-muted-foreground font-elegant">Within 24 hours</p>
+                </div>
               </div>
             </div>
 
             {/* Skills Preview */}
-            <div className="bg-gradient-to-br from-purple-600/20 to-blue-600/20 p-6 rounded-xl border border-purple-500/30">
-              <h3 className="text-xl font-bold text-white mb-4">What I Can Help With</h3>
-              <div className="grid grid-cols-2 gap-3">
+            <div className="glass-luxury p-8 rounded-2xl border border-[hsl(var(--elegant-purple))]/20">
+              <h3 className="text-2xl font-display font-bold text-foreground mb-6">What I Can Help With</h3>
+              <div className="grid grid-cols-2 gap-6">
                 <div className="text-center">
-                  <h4 className="font-semibold text-purple-400 mb-1">Web Development</h4>
-                  <p className="text-xs text-gray-400">React, Next.js, TypeScript</p>
+                  <h4 className="font-semibold text-[hsl(var(--elegant-purple))] mb-2">Web Development</h4>
+                  <p className="text-sm text-muted-foreground font-elegant">React, Next.js, TypeScript</p>
                 </div>
                 <div className="text-center">
-                  <h4 className="font-semibold text-blue-400 mb-1">Mobile Apps</h4>
-                  <p className="text-xs text-gray-400">React Native, Flutter</p>
+                  <h4 className="font-semibold text-[hsl(var(--elegant-blue))] mb-2">Mobile Apps</h4>
+                  <p className="text-sm text-muted-foreground font-elegant">React Native, Flutter</p>
                 </div>
                 <div className="text-center">
-                  <h4 className="font-semibold text-green-400 mb-1">AI & ML</h4>
-                  <p className="text-xs text-gray-400">Python, TensorFlow</p>
+                  <h4 className="font-semibold text-[hsl(var(--elegant-charcoal))] mb-2">AI & ML</h4>
+                  <p className="text-sm text-muted-foreground font-elegant">Python, TensorFlow</p>
                 </div>
                 <div className="text-center">
-                  <h4 className="font-semibold text-pink-400 mb-1">UI/UX Design</h4>
-                  <p className="text-xs text-gray-400">Figma, Tailwind CSS</p>
+                  <h4 className="font-semibold text-[hsl(var(--elegant-slate))] mb-2">UI/UX Design</h4>
+                  <p className="text-sm text-muted-foreground font-elegant">Figma, Tailwind CSS</p>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Contact Form */}
-          <div className="bg-gray-800/50 p-8 rounded-xl border border-gray-700/50">
-            <h3 className="text-2xl font-bold text-white mb-6">Send me a message</h3>
+          <div className="glass-elevated p-10 rounded-2xl animate-fade-in">
+            <h3 className="text-3xl font-display font-bold text-foreground mb-8">Send me a message</h3>
             
             <div className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium text-foreground mb-3">
                     Name *
                   </label>
                   <input
@@ -123,12 +136,12 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-4 glass rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-[hsl(var(--elegant-purple))] focus:border-transparent transition-all duration-200 border border-border"
                     placeholder="Your name"
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium text-foreground mb-3">
                     Email *
                   </label>
                   <input
@@ -138,14 +151,14 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-4 glass rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-[hsl(var(--elegant-purple))] focus:border-transparent transition-all duration-200 border border-border"
                     placeholder="your.email@example.com"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
+                <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-3">
                   Subject
                 </label>
                 <input
@@ -154,13 +167,13 @@ const Contact = () => {
                   name="subject"
                   value={formData.subject}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-4 glass rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-[hsl(var(--elegant-purple))] focus:border-transparent transition-all duration-200 border border-border"
                   placeholder="Project inquiry, collaboration, etc."
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-3">
                   Message *
                 </label>
                 <textarea
@@ -169,8 +182,8 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleInputChange}
                   required
-                  rows={5}
-                  className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 resize-vertical"
+                  rows={6}
+                  className="w-full px-4 py-4 glass rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-[hsl(var(--elegant-purple))] focus:border-transparent transition-all duration-200 resize-vertical border border-border"
                   placeholder="Tell me about your project or idea..."
                 />
               </div>
@@ -179,7 +192,7 @@ const Contact = () => {
                 type="button"
                 onClick={handleSendMessage}
                 disabled={!formData.name || !formData.email || !formData.message}
-                className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 disabled:from-gray-600 disabled:to-gray-700 text-white py-4 px-6 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 flex items-center justify-center gap-2 disabled:transform-none disabled:shadow-none disabled:cursor-not-allowed"
+                className="w-full btn-primary text-white py-5 px-8 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-3 disabled:transform-none disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Send className="w-5 h-5" />
                 Send Message

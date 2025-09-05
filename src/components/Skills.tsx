@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const Skills = () => {
@@ -14,45 +13,49 @@ const Skills = () => {
     "Information Retrieval", "Remote Sensing", "Performance Optimization", "Augmented Reality",
   ];
 
-  const getRandomColor = (index: number) => {
+  const getElegantColor = (index: number) => {
     const colors = [
-      'bg-purple-600/20 text-purple-300 border-purple-500/30 hover:bg-purple-600/30',
-      'bg-blue-600/20 text-blue-300 border-blue-500/30 hover:bg-blue-600/30',
-      'bg-green-600/20 text-green-300 border-green-500/30 hover:bg-green-600/30',
-      'bg-pink-600/20 text-pink-300 border-pink-500/30 hover:bg-pink-600/30',
-      'bg-yellow-600/20 text-yellow-300 border-yellow-500/30 hover:bg-yellow-600/30',
-      'bg-red-600/20 text-red-300 border-red-500/30 hover:bg-red-600/30',
-      'bg-indigo-600/20 text-indigo-300 border-indigo-500/30 hover:bg-indigo-600/30',
-      'bg-teal-600/20 text-teal-300 border-teal-500/30 hover:bg-teal-600/30',
+      'glass border-[hsl(var(--elegant-purple))]/20 text-[hsl(var(--elegant-purple))] hover:bg-[hsl(var(--elegant-purple))]/5',
+      'glass border-[hsl(var(--elegant-blue))]/20 text-[hsl(var(--elegant-blue))] hover:bg-[hsl(var(--elegant-blue))]/5',
+      'glass border-[hsl(var(--elegant-charcoal))]/20 text-[hsl(var(--elegant-charcoal))] hover:bg-[hsl(var(--elegant-charcoal))]/5',
+      'glass border-[hsl(var(--elegant-slate))]/20 text-[hsl(var(--elegant-slate))] hover:bg-[hsl(var(--elegant-slate))]/5',
     ];
     return colors[index % colors.length];
   };
 
   return (
-    <section id="skills" className="py-20 px-6 bg-gradient-to-br from-gray-800 to-gray-900">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+    <section id="skills" className="py-32 px-6 relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-[0.03]">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `radial-gradient(circle at 2px 2px, hsl(var(--elegant-purple)) 2px, transparent 0)`,
+          backgroundSize: '40px 40px'
+        }}></div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="text-center mb-20 animate-fade-in">
+          <h2 className="text-5xl md:text-6xl font-display font-bold mb-6 text-gradient">
             Skills & Expertise
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto mb-8"></div>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <div className="w-32 h-1 bg-gradient-to-r from-[hsl(var(--elegant-blue))] to-[hsl(var(--elegant-purple))] mx-auto mb-8 rounded-full"></div>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-elegant leading-relaxed">
             A comprehensive toolkit spanning multiple domains of technology and innovation
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 animate-fade-in">
           {skills.map((skill, index) => (
             <div
               key={skill}
               className={`
-                px-4 py-3 rounded-lg text-center text-sm font-medium
+                px-6 py-4 rounded-xl text-center text-sm font-medium
                 border transition-all duration-300 cursor-pointer
-                transform hover:scale-105 hover:shadow-lg
-                ${getRandomColor(index)}
+                transform hover:scale-105 elegant-hover
+                ${getElegantColor(index)}
               `}
               style={{
-                animationDelay: `${index * 0.05}s`,
+                animationDelay: `${index * 0.03}s`,
               }}
             >
               {skill}
@@ -60,23 +63,31 @@ const Skills = () => {
           ))}
         </div>
 
-        {/* Stats Section */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-purple-400 mb-2">50+</div>
-            <div className="text-gray-400">Skills Mastered</div>
+        {/* Premium Stats Section */}
+        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 animate-fade-in">
+          <div className="text-center group">
+            <div className="glass-elevated p-8 rounded-2xl elegant-hover mb-4">
+              <div className="text-4xl md:text-5xl font-display font-bold text-[hsl(var(--elegant-purple))] mb-2 animate-gradient-shift">50+</div>
+              <div className="text-muted-foreground font-medium">Skills Mastered</div>
+            </div>
           </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-blue-400 mb-2">18+</div>
-            <div className="text-gray-400">Projects Built</div>
+          <div className="text-center group">
+            <div className="glass-elevated p-8 rounded-2xl elegant-hover mb-4">
+              <div className="text-4xl md:text-5xl font-display font-bold text-[hsl(var(--elegant-blue))] mb-2 animate-gradient-shift">18+</div>
+              <div className="text-muted-foreground font-medium">Projects Built</div>
+            </div>
           </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-green-400 mb-2">5+</div>
-            <div className="text-gray-400">Years Experience</div>
+          <div className="text-center group">
+            <div className="glass-elevated p-8 rounded-2xl elegant-hover mb-4">
+              <div className="text-4xl md:text-5xl font-display font-bold text-[hsl(var(--elegant-charcoal))] mb-2 animate-gradient-shift">5+</div>
+              <div className="text-muted-foreground font-medium">Years Experience</div>
+            </div>
           </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-pink-400 mb-2">24/7</div>
-            <div className="text-gray-400">Learning Mode</div>
+          <div className="text-center group">
+            <div className="glass-elevated p-8 rounded-2xl elegant-hover mb-4">
+              <div className="text-4xl md:text-5xl font-display font-bold text-[hsl(var(--elegant-slate))] mb-2 animate-gradient-shift">24/7</div>
+              <div className="text-muted-foreground font-medium">Learning Mode</div>
+            </div>
           </div>
         </div>
       </div>
