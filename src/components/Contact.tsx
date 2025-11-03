@@ -31,7 +31,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-32 px-6 relative overflow-hidden">
+    <section id="contact" className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-[0.02]">
         <div className="absolute inset-0" style={{
@@ -41,19 +41,19 @@ const Contact = () => {
       </div>
       
       <div className="max-w-6xl mx-auto relative z-10">
-        <div className="text-center mb-20 animate-fade-in">
-          <h2 className="text-5xl md:text-6xl font-display font-bold mb-6 text-gradient">
+        <div className="text-center mb-12 sm:mb-16 lg:mb-20 animate-fade-in">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold mb-4 sm:mb-6 text-gradient">
             Let's Connect
           </h2>
-          <div className="w-32 h-1 bg-gradient-to-r from-[hsl(var(--elegant-slate))] to-[hsl(var(--elegant-purple))] mx-auto mb-8 rounded-full"></div>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-elegant leading-relaxed">
+          <div className="w-24 sm:w-32 h-1 bg-gradient-to-r from-[hsl(var(--elegant-slate))] to-[hsl(var(--elegant-purple))] mx-auto mb-6 sm:mb-8 rounded-full"></div>
+          <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto font-elegant leading-relaxed px-4">
             Ready to bring your ideas to life? Let's collaborate and create something amazing together.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-16 items-start">
+        <div className="grid md:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-start">
           {/* Contact Info */}
-          <div className="space-y-8 animate-fade-in">
+          <div className="space-y-6 sm:space-y-7 lg:space-y-8 animate-fade-in">
             <div className="glass-elevated p-8 rounded-2xl group elegant-hover">
               <div className="flex items-center gap-6 mb-6">
                 <div className="w-16 h-16 bg-gradient-to-br from-[hsl(var(--elegant-purple))]/10 to-[hsl(var(--elegant-purple))]/20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
@@ -120,13 +120,13 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="glass-elevated p-10 rounded-2xl animate-fade-in">
-            <h3 className="text-3xl font-display font-bold text-foreground mb-8">Send me a message</h3>
+          <div className="glass-elevated p-6 sm:p-8 lg:p-10 rounded-2xl animate-fade-in">
+            <h3 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-6 sm:mb-8">Send me a message</h3>
             
-            <div className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
+            <div className="space-y-5 sm:space-y-6">
+              <div className="grid md:grid-cols-2 gap-5 sm:gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-foreground mb-3">
+                  <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2 sm:mb-3">
                     Name *
                   </label>
                   <input
@@ -136,12 +136,12 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-4 glass rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-[hsl(var(--elegant-purple))] focus:border-transparent transition-all duration-200 border border-border"
+                    className="w-full px-4 py-3 sm:py-4 glass rounded-xl text-sm sm:text-base text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-[hsl(var(--elegant-purple))] focus:border-transparent transition-all duration-200 border border-border"
                     placeholder="Your name"
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-foreground mb-3">
+                  <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2 sm:mb-3">
                     Email *
                   </label>
                   <input
@@ -151,14 +151,14 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-4 glass rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-[hsl(var(--elegant-purple))] focus:border-transparent transition-all duration-200 border border-border"
+                    className="w-full px-4 py-3 sm:py-4 glass rounded-xl text-sm sm:text-base text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-[hsl(var(--elegant-purple))] focus:border-transparent transition-all duration-200 border border-border"
                     placeholder="your.email@example.com"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-3">
+                <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2 sm:mb-3">
                   Subject
                 </label>
                 <input
@@ -167,13 +167,13 @@ const Contact = () => {
                   name="subject"
                   value={formData.subject}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-4 glass rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-[hsl(var(--elegant-purple))] focus:border-transparent transition-all duration-200 border border-border"
+                  className="w-full px-4 py-3 sm:py-4 glass rounded-xl text-sm sm:text-base text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-[hsl(var(--elegant-purple))] focus:border-transparent transition-all duration-200 border border-border"
                   placeholder="Project inquiry, collaboration, etc."
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-3">
+                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2 sm:mb-3">
                   Message *
                 </label>
                 <textarea
@@ -183,7 +183,7 @@ const Contact = () => {
                   onChange={handleInputChange}
                   required
                   rows={6}
-                  className="w-full px-4 py-4 glass rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-[hsl(var(--elegant-purple))] focus:border-transparent transition-all duration-200 resize-vertical border border-border"
+                  className="w-full px-4 py-3 sm:py-4 glass rounded-xl text-sm sm:text-base text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-[hsl(var(--elegant-purple))] focus:border-transparent transition-all duration-200 resize-vertical border border-border"
                   placeholder="Tell me about your project or idea..."
                 />
               </div>
@@ -192,9 +192,9 @@ const Contact = () => {
                 type="button"
                 onClick={handleSendMessage}
                 disabled={!formData.name || !formData.email || !formData.message}
-                className="w-full btn-primary text-white py-5 px-8 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-3 disabled:transform-none disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full btn-primary text-white py-4 sm:py-5 px-6 sm:px-8 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 sm:gap-3 disabled:transform-none disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <Send className="w-5 h-5" />
+                <Send className="w-4 h-4 sm:w-5 sm:h-5" />
                 Send Message
               </button>
             </div>

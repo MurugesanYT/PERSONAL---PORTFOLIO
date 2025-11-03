@@ -151,25 +151,25 @@ const Portfolio = () => {
   };
 
   return (
-    <section id="portfolio" className="py-32 px-6 relative overflow-hidden">
+    <section id="portfolio" className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-20 animate-fade-in">
-          <h2 className="text-5xl md:text-6xl font-display font-bold mb-6 text-gradient">
+        <div className="text-center mb-12 sm:mb-16 lg:mb-20 animate-fade-in">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold mb-4 sm:mb-6 text-gradient">
             Portfolio
           </h2>
-          <div className="w-32 h-1 bg-gradient-to-r from-[hsl(var(--elegant-charcoal))] to-[hsl(var(--elegant-blue))] mx-auto mb-8 rounded-full"></div>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-elegant leading-relaxed">
+          <div className="w-24 sm:w-32 h-1 bg-gradient-to-r from-[hsl(var(--elegant-charcoal))] to-[hsl(var(--elegant-blue))] mx-auto mb-6 sm:mb-8 rounded-full"></div>
+          <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto font-elegant leading-relaxed px-4">
             A showcase of my diverse projects spanning various technologies and domains
           </p>
         </div>
 
-        {/* Elegant Category Filter */}
-        <div className="flex flex-wrap justify-center gap-3 mb-16 animate-fade-in">
+        {/* Ultra Elegant Category Filter - Fully Responsive */}
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-2.5 lg:gap-3 mb-12 sm:mb-14 lg:mb-16 animate-fade-in px-2">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-3 rounded-xl text-sm font-medium transition-all duration-300 elegant-hover ${
+              className={`px-4 py-2 sm:px-5 sm:py-2.5 lg:px-6 lg:py-3 rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 elegant-hover whitespace-nowrap ${
                 getCategoryColor(category, selectedCategory === category)
               }`}
             >
@@ -178,8 +178,8 @@ const Portfolio = () => {
           ))}
         </div>
 
-        {/* Premium Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-in">
+        {/* Ultra Premium Projects Grid - Fully Responsive */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 animate-fade-in">
           {filteredProjects.map((project, index) => (
             <div
               key={project.title}
@@ -188,9 +188,9 @@ const Portfolio = () => {
               }`}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="p-8">
+              <div className="p-6 sm:p-7 lg:p-8">
                 {/* Project Header */}
-                <div className="flex items-center justify-between mb-6">
+                <div className="flex flex-wrap items-center justify-between gap-2 sm:gap-3 mb-4 sm:mb-6">
                   <span className={`px-4 py-2 text-xs font-medium rounded-full ${
                     project.category === 'Web App' ? 'bg-[hsl(var(--elegant-purple))]/10 text-[hsl(var(--elegant-purple))] border border-[hsl(var(--elegant-purple))]/20' :
                     project.category === 'Geography' ? 'bg-[hsl(var(--elegant-blue))]/10 text-[hsl(var(--elegant-blue))] border border-[hsl(var(--elegant-blue))]/20' :
@@ -208,23 +208,23 @@ const Portfolio = () => {
                 </div>
 
                 {/* Project Content */}
-                <h3 className="text-2xl font-display font-semibold text-foreground mb-4 group-hover:text-[hsl(var(--elegant-purple))] transition-colors">
+                <h3 className="text-xl sm:text-2xl font-display font-semibold text-foreground mb-3 sm:mb-4 group-hover:text-[hsl(var(--elegant-purple))] transition-colors line-clamp-2">
                   {project.title}
                 </h3>
-                <p className="text-muted-foreground mb-8 text-base leading-relaxed font-elegant">
+                <p className="text-muted-foreground mb-6 sm:mb-8 text-sm sm:text-base leading-relaxed font-elegant line-clamp-3">
                   {project.description}
                 </p>
 
                 {/* Project Link */}
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3 sm:gap-4">
                   <a
                     href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-[hsl(var(--elegant-purple))] hover:text-[hsl(var(--elegant-blue))] font-medium text-sm transition-colors elegant-hover"
+                    className="flex items-center gap-2 text-[hsl(var(--elegant-purple))] hover:text-[hsl(var(--elegant-blue))] font-medium text-xs sm:text-sm transition-colors elegant-hover"
                   >
-                    <ExternalLink className="w-4 h-4" />
-                    View Project
+                    <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                    <span className="whitespace-nowrap">View Project</span>
                   </a>
                 </div>
               </div>
@@ -235,22 +235,22 @@ const Portfolio = () => {
           ))}
         </div>
 
-        {/* Premium Stats */}
-        <div className="mt-20 text-center animate-fade-in">
-          <div className="glass-luxury rounded-2xl px-12 py-8 inline-flex items-center gap-12">
+        {/* Ultra Premium Stats - Responsive */}
+        <div className="mt-12 sm:mt-16 lg:mt-20 text-center animate-fade-in">
+          <div className="glass-luxury rounded-2xl px-6 py-6 sm:px-10 sm:py-7 lg:px-12 lg:py-8 inline-flex flex-wrap items-center justify-center gap-6 sm:gap-8 lg:gap-12">
             <div className="text-center">
-              <div className="text-3xl font-display font-bold text-[hsl(var(--elegant-purple))]">{projects.length}+</div>
-              <div className="text-sm text-muted-foreground font-medium">Total Projects</div>
+              <div className="text-2xl sm:text-3xl font-display font-bold text-[hsl(var(--elegant-purple))]">{projects.length}+</div>
+              <div className="text-xs sm:text-sm text-muted-foreground font-medium whitespace-nowrap">Total Projects</div>
             </div>
-            <div className="w-px h-12 bg-border"></div>
+            <div className="hidden sm:block w-px h-10 sm:h-12 bg-border"></div>
             <div className="text-center">
-              <div className="text-3xl font-display font-bold text-[hsl(var(--elegant-blue))]">{categories.length - 1}</div>
-              <div className="text-sm text-muted-foreground font-medium">Categories</div>
+              <div className="text-2xl sm:text-3xl font-display font-bold text-[hsl(var(--elegant-blue))]">{categories.length - 1}</div>
+              <div className="text-xs sm:text-sm text-muted-foreground font-medium whitespace-nowrap">Categories</div>
             </div>
-            <div className="w-px h-12 bg-border"></div>
+            <div className="hidden sm:block w-px h-10 sm:h-12 bg-border"></div>
             <div className="text-center">
-              <div className="text-3xl font-display font-bold text-[hsl(var(--elegant-charcoal))]">3</div>
-              <div className="text-sm text-muted-foreground font-medium">Featured Apps</div>
+              <div className="text-2xl sm:text-3xl font-display font-bold text-[hsl(var(--elegant-charcoal))]">3</div>
+              <div className="text-xs sm:text-sm text-muted-foreground font-medium whitespace-nowrap">Featured Apps</div>
             </div>
           </div>
         </div>
